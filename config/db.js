@@ -1,13 +1,13 @@
-// backend/db.js
-const { Pool } = require('pg');
+const { Pool } = require("pg");
+require("dotenv").config();
 
-// Configurar la conexión a la base de datos PostgreSQL
+// Configurar la conexión a la base de datos PostgreSQL usando variables de entorno
 const pool = new Pool({
-  user: 'postgres',           // Cambia por tu nombre de usuario de PostgreSQL
-  host: 'localhost',            // Cambia por la IP o dominio de tu servidor de base de datos
-  database: 'gestion_pruebas', // Nombre de tu base de datos
-  password: 'P0stgr3',    // Contraseña de tu usuario de PostgreSQL
-  port: 5432                    // Puerto de PostgreSQL, generalmente 5432
+  user: process.env.PGUSER, // Usuario de PostgreSQL (Railway variable)
+  host: process.env.PGHOST, // Host de la base de datos (Railway variable)
+  database: process.env.PGDATABASE, // Nombre de la base de datos (Railway variable)
+  password: process.env.PGPASSWORD, // Contraseña del usuario de PostgreSQL (Railway variable)
+  port: process.env.PGPORT, // Puerto de PostgreSQL (Railway variable, usualmente 5432)
 });
 
 // Exportar el pool de conexiones para usarlo en otros módulos
